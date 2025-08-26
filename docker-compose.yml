@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: ${DOCKER_USERNAME}/ecole-manager:latest
+    image: ${DOCKER_USERNAME:-username}/ecole-manager:${VERSION:-latest}
     container_name: ecole-manager
     ports:
       - "80:80"
