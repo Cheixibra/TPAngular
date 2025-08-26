@@ -1,0 +1,41 @@
+
+
+<div class="container py-5">
+	<div class="row justify-content-center">
+		<div class="col-md-8 col-lg-6">
+			<div class="card shadow border-0">
+				<div class="card-header bg-primary text-white text-center">
+					<h4 class="mb-0">{{ isEditMode ? 'Modifier' : 'Ajouter' }} un enseignant</h4>
+				</div>
+				<div class="card-body">
+					<form [formGroup]="teacherForm" (ngSubmit)="onSubmit()">
+						<div class="mb-3">
+							<label for="firstName" class="form-label">Prénom</label>
+							<input type="text" class="form-control" id="firstName" formControlName="firstName" placeholder="Prénom">
+							<div *ngIf="teacherForm.controls['firstName'].invalid && teacherForm.controls['firstName'].touched" class="text-danger small">Le prénom est obligatoire</div>
+						</div>
+						<div class="mb-3">
+							<label for="lastName" class="form-label">Nom</label>
+							<input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Nom">
+							<div *ngIf="teacherForm.controls['lastName'].invalid && teacherForm.controls['lastName'].touched" class="text-danger small">Le nom est obligatoire</div>
+						</div>
+						<div class="mb-3">
+							<label for="email" class="form-label">Email</label>
+							<input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
+							<div *ngIf="teacherForm.controls['email'].invalid && teacherForm.controls['email'].touched" class="text-danger small">Un email valide est obligatoire</div>
+						</div>
+						<div class="mb-3">
+							<label for="subject" class="form-label">Matière</label>
+							<input type="text" class="form-control" id="subject" formControlName="subject" placeholder="Matière enseignée">
+							<div *ngIf="teacherForm.controls['subject'].invalid && teacherForm.controls['subject'].touched" class="text-danger small">La matière est obligatoire</div>
+						</div>
+						<div class="d-flex justify-content-between">
+							<button type="submit" class="btn btn-success px-4" [disabled]="teacherForm.invalid">{{ isEditMode ? 'Enregistrer' : 'Ajouter' }}</button>
+							<a [routerLink]="['/teachers']" class="btn btn-outline-secondary px-4">Annuler</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

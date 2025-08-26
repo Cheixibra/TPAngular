@@ -1,0 +1,35 @@
+<div class="container mt-4">
+  <h2>Liste des étudiants</h2>
+  <div class="mb-3">
+    <a [routerLink]="['/students/add']" class="btn btn-primary">Ajouter un étudiant</a>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Prénom</th>
+          <th>Nom</th>
+          <th>Email</th>
+          <th>Date de naissance</th>
+          <th>Niveau</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students">
+          <td>{{ student.id }}</td>
+          <td>{{ student.firstName }}</td>
+          <td>{{ student.lastName }}</td>
+          <td>{{ student.email }}</td>
+          <td>{{ student.dateOfBirth | date:'dd/MM/yyyy' }}</td>
+          <td>{{ student.grade }}</td>
+          <td>
+            <a [routerLink]="['/students/edit', student.id]" class="btn btn-sm btn-info me-2">Modifier</a>
+            <button (click)="deleteStudent(student.id!)" class="btn btn-sm btn-danger">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

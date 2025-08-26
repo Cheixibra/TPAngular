@@ -1,0 +1,36 @@
+
+
+<div class="container py-5">
+	<div class="d-flex justify-content-between align-items-center mb-4">
+		<h2 class="fw-bold text-primary">Liste des enseignants</h2>
+		<a class="btn btn-success" routerLink="/teachers/add"><i class="bi bi-plus-circle"></i> Ajouter un enseignant</a>
+	</div>
+	<div class="table-responsive shadow rounded">
+		<table class="table table-hover align-middle mb-0">
+			<thead class="table-light">
+				<tr>
+					<th>Prénom</th>
+					<th>Nom</th>
+					<th>Email</th>
+					<th>Matière</th>
+					<th class="text-end">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let teacher of teachers">
+					<td>{{ teacher.firstName }}</td>
+					<td>{{ teacher.lastName }}</td>
+					<td>{{ teacher.email }}</td>
+					<td>{{ teacher.subject }}</td>
+					<td class="text-end">
+						<button class="btn btn-outline-primary btn-sm me-2" (click)="editTeacher(teacher)"><i class="bi bi-pencil"></i> Modifier</button>
+						<button class="btn btn-outline-danger btn-sm" (click)="deleteTeacher(teacher)"><i class="bi bi-trash"></i> Supprimer</button>
+					</td>
+				</tr>
+				<tr *ngIf="teachers.length === 0">
+					<td colspan="5" class="text-center text-muted">Aucun enseignant trouvé.</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

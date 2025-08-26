@@ -1,0 +1,57 @@
+<div class="container mt-4">
+  <h2>{{ isEditMode ? 'Modifier' : 'Ajouter' }} un étudiant</h2>
+  
+  <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="firstName" class="form-label">Prénom</label>
+      <input type="text" class="form-control" id="firstName" formControlName="firstName">
+      <div *ngIf="studentForm.controls['firstName'].invalid && studentForm.controls['firstName'].touched" class="text-danger">
+        Le prénom est obligatoire
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Nom</label>
+      <input type="text" class="form-control" id="lastName" formControlName="lastName">
+      <div *ngIf="studentForm.controls['lastName'].invalid && studentForm.controls['lastName'].touched" class="text-danger">
+        Le nom est obligatoire
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" formControlName="email">
+      <div *ngIf="studentForm.controls['email'].invalid && studentForm.controls['email'].touched" class="text-danger">
+        Un email valide est obligatoire
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="dateOfBirth" class="form-label">Date de naissance</label>
+      <input type="date" class="form-control" id="dateOfBirth" formControlName="dateOfBirth">
+      <div *ngIf="studentForm.controls['dateOfBirth'].invalid && studentForm.controls['dateOfBirth'].touched" class="text-danger">
+        La date de naissance est obligatoire
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="grade" class="form-label">Niveau</label>
+      <select class="form-select" id="grade" formControlName="grade">
+        <option value="">Sélectionnez un niveau</option>
+  <option value="Licence 1">Licence 1</option>
+  <option value="Licence 2">Licence 2</option>
+  <option value="Licence 2">Licence 3</option>
+  <option value="Master 1">Master 1</option>
+  <option value="Master 2">Master 2</option>
+      </select>
+      <div *ngIf="studentForm.controls['grade'].invalid && studentForm.controls['grade'].touched" class="text-danger">
+        Le niveau est obligatoire
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary me-2" [disabled]="studentForm.invalid">Enregistrer</button>
+      <a [routerLink]="['/students']" class="btn btn-secondary">Annuler</a>
+    </div>
+  </form>
+</div>
